@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>kwzdsb</title>
+  </head>
+  <body>
+    <h1>kwzdsb</h1>
+    <table border="1">
+      <caption>Sample Table</caption>
+      <thead>
+          <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+              <th>Header 3</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td id="cell1">{{ a }}</td>
+              <td>Row 1, Cell 2</td>
+              <td>Row 1, Cell 3</td>
+          </tr>
+          <tr>
+              <td>Row 2, Cell 1</td>
+              <td>Row 2, Cell 2</td>
+              <td>Row 2, Cell 3</td>
+          </tr>
+          <!-- Add more rows as needed -->
+      </tbody>
+  </table>
+  <button onclick="updateCellValue()">Update Cell Value</button>
+
+  <a href="2.html">Go to 2</a>
+
+  <script>
+    function updateCellValue() {
+        // 发送请求给服务器，告诉它更新表格的值
+        fetch('/update_cell_value')
+            .then(response => response.json())
+            .then(data => {
+                // 更新第一个单元格的内容
+                document.getElementById('cell1').innerText = data.new_value;
+            });
+    }
+  </script>
+  </body>
+</html>
